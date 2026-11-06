@@ -1,0 +1,169 @@
+<!doctype html><html lang="kk"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>10В Информатика нәтижелері</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@700&family=PT+Sans:wght@400;700&family=PT+Mono&display=swap">
+<style>
+/* Layout: оқушылар тізімі сол жақта, таңдалған оқушының карточкасы оң жақта; телефонда тізім жоғарыда */
+:root{
+  --bg:#F3F5F9; --surface:#FFFFFF; --ink:#18233A; --muted:#5D6880; --line:#D9DFEA;
+  --accent:#2B4C7E; --accent-soft:#E3EAF5; --good:#1E7B4A; --good-soft:#E3F2EA;
+  --warn:#9A6200; --warn-soft:#FBF0D9; --none:#8A93A6; --none-soft:#EEF0F4;
+  --barA:#A9BCD8; --barB:#2B4C7E; --avg:#C2410C;
+  --f-display:"PT Serif",Georgia,serif; --f-body:"PT Sans","Segoe UI",Arial,sans-serif; --f-num:"PT Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0F1522; --surface:#172034; --ink:#E6EBF4; --muted:#9AA6BD; --line:#2A3650;
+  --accent:#8FB0E3; --accent-soft:#22314D; --good:#5CC48C; --good-soft:#163428;
+  --warn:#E5AE4E; --warn-soft:#3A2E14; --none:#8A93A6; --none-soft:#222B3D;
+  --barA:#45597A; --barB:#8FB0E3; --avg:#F08A4B; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0F1522; --surface:#172034; --ink:#E6EBF4; --muted:#9AA6BD; --line:#2A3650;
+  --accent:#8FB0E3; --accent-soft:#22314D; --good:#5CC48C; --good-soft:#163428;
+  --warn:#E5AE4E; --warn-soft:#3A2E14; --none:#8A93A6; --none-soft:#222B3D;
+  --barA:#45597A; --barB:#8FB0E3; --avg:#F08A4B; color-scheme:dark}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.5}
+.wrap{max-width:1080px;margin:0 auto;padding-block:28px 48px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:22px}
+header h1{font-family:var(--f-display);font-size:clamp(22px,3.4vw,30px);line-height:1.2;margin:0;text-wrap:balance}
+header p{margin:4px 0 0;color:var(--muted);font-size:14px}
+.layout{display:grid;grid-template-columns:270px 1fr;gap:22px;align-items:start}
+@media (max-width:760px){.layout{grid-template-columns:1fr}}
+.list{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:8px;display:grid;gap:2px}
+.list h2{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:6px 10px 6px;font-weight:700}
+.st{all:unset;box-sizing:border-box;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:8px;padding:9px 10px;border-radius:7px;font-size:15px}
+.st:hover{background:var(--accent-soft)}
+.st:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.st[aria-selected="true"]{background:var(--accent);color:var(--surface)}
+.st[aria-selected="true"] .pill{background:var(--surface);color:var(--accent)}
+.pill{font-family:var(--f-num);font-size:12px;padding:1px 7px;border-radius:99px;background:var(--accent-soft);color:var(--accent);white-space:nowrap}
+@media (max-width:760px){.list{display:flex;flex-wrap:wrap;gap:6px;padding:10px}.list h2{width:100%;margin:0 2px 2px}.st{border:1px solid var(--line);padding:6px 10px;font-size:14px}.st .pill{display:none}}
+.card{min-width:0;display:grid;gap:18px}
+.who{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:6px 16px}
+.who h2{font-family:var(--f-display);font-size:clamp(22px,3vw,28px);margin:0;line-height:1.2}
+.who span{color:var(--muted);font-size:14px}
+.tests{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media (max-width:900px){.tests{grid-template-columns:1fr}}
+.sec{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px;display:grid;gap:14px;min-width:0}
+.sec-h{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sec-h h3{margin:0;font-size:13px;letter-spacing:.07em;text-transform:uppercase;color:var(--accent)}
+.badge{font-size:12px;font-weight:700;padding:3px 9px;border-radius:99px}
+.b-good{background:var(--good-soft);color:var(--good)} .b-warn{background:var(--warn-soft);color:var(--warn)} .b-none{background:var(--none-soft);color:var(--none)}
+.nums{display:grid;grid-template-columns:repeat(auto-fit,minmax(78px,1fr));gap:8px}
+.num{display:grid;gap:2px}
+.num small{font-size:12px;color:var(--muted)}
+.num b{font-family:var(--f-num);font-size:26px;font-weight:400;font-variant-numeric:tabular-nums;line-height:1.1}
+.num b i{font-style:normal;font-size:13px;color:var(--muted)}
+.up{color:var(--good)} .down{color:#B42318} .flat{color:var(--muted)}
+.bars{display:grid;gap:9px}
+.bar{display:grid;grid-template-columns:52px 1fr;align-items:center;gap:8px;font-size:12px;color:var(--muted)}
+.track{position:relative;height:16px;background:var(--bg);border-radius:4px}
+.fill{position:absolute;inset:0 auto 0 0;border-radius:4px}
+.tick{position:absolute;top:-3px;bottom:-3px;width:2px;background:var(--avg)}
+.legend{font-size:12px;color:var(--muted);display:flex;gap:6px;align-items:center}
+.legend i{display:inline-block;width:2px;height:12px;background:var(--avg)}
+.txt{margin:0;font-size:15px;max-width:62ch}
+.rec{margin:0;font-size:14px;color:var(--muted);border-top:1px solid var(--line);padding-top:10px}
+.rec strong{color:var(--ink)}
+.missing{color:var(--muted);font-size:14px;margin:0}
+footer{color:var(--muted);font-size:12px}
+@media (prefers-reduced-motion:no-preference){.fill{transition:width .4s ease}}
+</style></head><body>
+
+<div class="wrap">
+  <header>
+    <h1>10В сыныбы · Информатика нәтижелері</h1>
+    <p>Dostyq School Kyzylorda · ДАС, БС-1, ПҚС-1, ПҚС-2 · максимал балл — 50. Оқушының аты-жөнін басыңыз.</p>
+  </header>
+  <div class="layout">
+    <nav class="list" id="list" role="tablist" aria-label="Оқушылар"><h2>Оқушылар</h2></nav>
+    <main class="card" id="card" aria-live="polite"></main>
+  </div>
+  <footer>Сынып орташасы (информатика, 11 оқушы, 50-ден): ДАС — 11.8, БС-1 — 19.8, ПҚС-1 — 18.1, ПҚС-2 — 22.2. Деңгейлер: 30+ жоғары, 20–29 орта, 20-дан төмен — қолдау қажет.</footer>
+</div>
+<script>
+const BL=["ДАС","БС-1"],BA=[11.8,19.8],PL=["ПҚС-1","ПҚС-2"],PA=[18.1,22.2];
+const S=[
+ {n:"Шымпейсов Санжар",bs:[16,31],pq:[21,30],
+  bsT:"БС-1-де сыныптағы ең жоғары балл (31). ДАС-пен салыстырғанда балы екі есе өсті (+15).",
+  bsR:"35+ балға шығу үшін қате жіберген тақырыптарды талдау.",
+  pqT:"ПҚС-2-де 30 балл, ПҚС-1-ден +9. Жоғары деңгейге шықты, БС-1 нәтижесіне (31) жақындады.",
+  pqR:"35+ балға шығу үшін қателерді талдау."},
+ {n:"Зайдинда Алихан",bs:[18,29],pq:[31,30],
+  bsT:"Жақсы өсім (+11): 18 → 29. Жоғары деңгейге жақын.",
+  bsR:"30+ балға шығып, деңгейді бекіту.",
+  pqT:"Екі ПҚС-та да жоғары деңгей: 31 → 30. Ең тұрақты оқушылардың бірі.",
+  pqR:"Деңгейді сақтап, 35+ балға шығу."},
+ {n:"Жұмабеков Нұрмұхаммед",bs:[18,25],pq:[18,33],
+  bsT:"Өсім +7: 18 → 25. Орта деңгей, сынып орташасынан жоғары.",
+  bsR:"Аптасына 2–3 рет тест шешіп, 30 балға жету.",
+  pqT:"ПҚС-2-де сыныптағы ең жоғары балл (33). ПҚС бойынша ең көп өсім (+15).",
+  pqR:"Жеткен деңгейді бекіту, мақсат — 35+."},
+ {n:"Кенжебеков Жанболат",bs:[11,22],pq:[21,29],
+  bsT:"Балы екі есе өсті (+11): 11 → 22. Орта деңгейге шықты.",
+  bsR:"Өсу қарқынын сақтап, 30 балға жету.",
+  pqT:"Жақсы өсім (+8): 21 → 29. Жоғары деңгейге жақын.",
+  pqR:"30+ балға шығу."},
+ {n:"Серік Бақдәулет",bs:[2,22],pq:[14,23],
+  bsT:"Сыныптағы ең үлкен өсім (+20): 2 → 22.",
+  bsR:"Өсуді жалғастырып, нәтижені тұрақтандыру.",
+  pqT:"Жақсы өсім (+9): 14 → 23. Сынып орташасынан жоғары шықты.",
+  pqR:"Өсуді жалғастырып, 30 балға жету."},
+ {n:"Жұбандық Мағжан",bs:[8,22],pq:[15,14],
+  bsT:"Жақсы өсім (+14): 8 → 22. Орта деңгейге шықты.",
+  bsR:"Жеткен деңгейді бекіту.",
+  pqT:"Өсім жоқ: 15 → 14. Сынып орташасынан (22.2) едәуір төмен, БС-1-дегі 22 балдан да төмен.",
+  pqR:"Төмендеу себебін анықтап, базалық тақырыптарды бекіту."},
+ {n:"Рақыш Ержан",bs:[14,19],pq:[20,30],
+  bsT:"Өсім +5: 14 → 19. Сынып орташасы деңгейінде.",
+  bsR:"Аптасына 2–3 рет тест шешіп, өсу қарқынын арттыру.",
+  pqT:"Айтарлықтай өсім (+10): 20 → 30. Жоғары деңгейге шықты.",
+  pqR:"Жеткен деңгейді бекіту."},
+ {n:"Маратов Нарұл",bs:[12,18],pq:[18,20],
+  bsT:"Өсім +6: 12 → 18. Сынып орташасынан сәл төмен.",
+  bsR:"Әлсіз тақырыптарды анықтап, жүйелі дайындалу.",
+  pqT:"Өсім аз (+2): 18 → 20. Сынып орташасынан төмен.",
+  pqR:"Әлсіз тақырыптарды анықтап, аптасына 2–3 рет тест шешу."},
+ {n:"Шаден Асылхан",bs:[11,11],pq:[14,14],
+  bsT:"Өсім жоқ: екі сынақта да 11 балл. Деңгейі төмен.",
+  bsR:"Базалық тақырыптарды қайталау, жеке дайындық жоспары.",
+  pqT:"Өсім жоқ: екі ПҚС-та да 14 балл. Деңгейі төмен.",
+  pqR:"Мұғаліммен жеке жұмыс, жеке дайындық жоспары."},
+ {n:"Тілепберген Расул",bs:[7,10],pq:[12,9],
+  bsT:"Өсім аз (+3): 7 → 10. Деңгейі төмен.",
+  bsR:"Жеке дайындық жоспары және тұрақты бақылау.",
+  pqT:"Балы төмендеді: 12 → 9 (−3). ПҚС-2-дегі ең төмен нәтиже.",
+  pqR:"Мұғаліммен жеке жұмыс, ата-анамен байланыс."},
+ {n:"Азамат Альтаир",bs:[13,9],pq:[15,12],
+  bsT:"Балы төмендеген жалғыз оқушы: 13 → 9 (−4). БС-1-дегі ең төмен нәтиже.",
+  bsR:"Төмендеу себебін анықтап, жеке дайындық жоспарын құру.",
+  pqT:"Балы төмендеді: 15 → 12 (−3). Деңгейі төмен.",
+  pqR:"Базалық тақырыптар бойынша қосымша сабақ, жеке бақылау."}
+];
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+function badge(v){if(v==null)return'<span class="badge b-none">тапсырмаған</span>';return v>=30?'<span class="badge b-good">Жоғары деңгей</span>':v>=20?'<span class="badge b-warn">Орта деңгей</span>':'<span class="badge b-warn">Қолдау қажет</span>'}
+function delta(a,b){if(a==null||b==null)return'<b class="flat">—</b>';const d=Math.round((b-a)*10)/10;return`<b class="${d>0?'up':d<0?'down':'flat'}">${d>0?'▲ +':d<0?'▼ ':'■ '}${d}</b>`}
+function bar(label,v,avg,cls){const w=v==null?0:v/50*100;return`<div class="bar"><span>${label}</span><div class="track" title="${label}: ${v==null?'тапсырмаған':v+' / 50'}; сынып орташасы ${avg}"><div class="fill" style="width:${w}%;background:var(${cls})"></div><div class="tick" style="left:calc(${avg/50*100}% - 1px)"></div></div></div>`}
+function section(title,labels,vals,avgs,txt,rec){
+  const last=vals[vals.length-1];
+  const nums=labels.map((l,k)=>`<div class="num"><small>${l}</small><b>${vals[k]??'—'}${vals[k]!=null?'<i> /50</i>':''}</b></div>`).join('');
+  const ch=vals.length>1?`<div class="num"><small>Өзгеріс (${labels[0]} → ${labels[labels.length-1]})</small>${delta(vals[0],last)}</div>`
+                        :`<div class="num"><small>Сынып орташасынан</small>${delta(avgs[0],vals[0])}</div>`;
+  const bars=labels.map((l,k)=>bar(l,vals[k],avgs[k],k===labels.length-1?'--barB':'--barA')).join('');
+  return`<section class="sec">
+   <div class="sec-h"><h3>${title}</h3>${badge(last)}</div>
+   <div class="nums">${nums}${ch}</div>
+   <div class="bars">${bars}<div class="legend"><i></i> сынып орташасы: ${labels.map((l,k)=>l+' — '+avgs[k]).join(', ')}</div></div>
+   <p class="txt">${esc(txt)}</p>
+   <p class="rec"><strong>Ұсыныс:</strong> ${esc(rec)}</p>
+  </section>`}
+const list=document.getElementById('list'),card=document.getElementById('card');
+S.forEach((s,i)=>{const b=document.createElement('button');b.className='st';b.id='st'+i;b.setAttribute('role','tab');
+  b.innerHTML=`<span>${esc(s.n)}</span><span class="pill">${s.bs[1]}</span>`;b.onclick=()=>show(i);list.appendChild(b)});
+function show(i){const s=S[i];
+  list.querySelectorAll('.st').forEach((b,k)=>b.setAttribute('aria-selected',k===i));
+  card.innerHTML=`<div class="who"><h2>${esc(s.n)}</h2><span>10В · бейіндік пән: Информатика</span></div>
+   <div class="tests">${section('БС талдауы',BL,s.bs,BA,s.bsT,s.bsR)}${section('ПҚС талдауы',PL,s.pq,PA,s.pqT,s.pqR)}</div>`;
+  try{localStorage.setItem('sel',i)}catch(e){}}
+let start=0;try{const v=+localStorage.getItem('sel');if(v>=0&&v<S.length)start=v}catch(e){}
+show(start);
+</script>
+</body></html>
